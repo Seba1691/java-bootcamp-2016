@@ -1,0 +1,10 @@
+DROP TABLE Exams;
+DROP TABLE ExamTypes;
+DROP TABLE Assistants;
+DROP TABLE Schedules;
+DROP TABLE Courses;
+DROP TABLE Teachers;
+DROP TABLE Students;
+DROP TABLE Persons;
+
+DROP FUNCTION DAYNAMEBYINT;
