@@ -1,0 +1,19 @@
+db.students.find(
+   {
+     notas:
+       {
+          $elemMatch:
+            {
+               note: {$gt:4},
+               course_name : "Maths"}
+            }
+       }
+    }
+);
+
+db.courses.find(
+	{
+	  "assigned_teacher.firstname" : "TeacherName1"
+	}
+).sort({name:1});
+
