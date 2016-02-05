@@ -1,0 +1,74 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is the documentation for a Shopping Cart Service.\n",
+        "version": "1.0.0",
+        "title": "Shopping Cart Service"
+    },
+    "basePath": "/v2",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/shoppingcart/items/additem/": {
+            "put": {
+                "summary": "Get user by user name",
+                "operationId": "addItem",
+                "parameters": [
+                    {
+                        "name": "itemname",
+                        "in": "query",
+                        "description": "Item to add",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/shoppingcart/items/removeitem/": {
+            "delete": {
+                "summary": "Remove an Item to the Cart",
+                "operationId": "removeItem",
+                "parameters": [
+                    {
+                        "name": "itemname",
+                        "in": "query",
+                        "description": "Item to remove",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "404": {
+                        "description": "Item not found"
+                    }
+                }
+            }
+        },
+        "/shoppingcart/getcontents": {
+            "get": {
+                "summary": "Get all Items in the cart",
+                "operationId": "getcontents",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
