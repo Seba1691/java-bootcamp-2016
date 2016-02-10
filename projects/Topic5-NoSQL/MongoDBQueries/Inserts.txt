@@ -1,0 +1,121 @@
+db.courses.insert({
+	name: "Maths",
+	assigned_teacher: {
+						firstname: "TeacherName1",
+						lastname: "TeacherLastName1",
+						dateofbirth: "01/10/1960"
+                    },
+	hoursaweek: 5,
+	scheduler: [
+			{
+			starttime: "10:00 hs",
+			endtime: "12:00 hs",
+			day: "Monday"
+			}
+		   ]});
+		   
+db.courses.insert({
+	name: "Programming",
+	assigned_teacher: {
+						firstname: "TeacherName2",
+						lastname: "TeacherLastName2",
+						dateofbirth: "01/11/1953"
+                    },
+	hoursaweek: 2,
+	scheduler: [
+			{
+			starttime: "8:00 hs",
+			endtime: "9:00 hs",
+			day: "Wednesday"
+			},
+			{
+			starttime: "9:00 hs",
+			endtime: "10:00 hs",
+			day: "Saturday"
+			}
+		   ]});
+		   
+db.courses.insert({
+	name: "Physics",
+	assigned_teacher: {
+						firstname: "TeacherName3",
+						lastname: "TeacherLastName3",
+						dateofbirth: "01/01/1964"
+                    },
+	hoursaweek: 3,
+	scheduler: [
+			{
+			starttime: "10:00 hs",
+			endtime: "14:00 hs",
+			day: "Friday"
+			}
+		   ]});
+
+db.students.insert({
+	firstname: "Student1",
+	lastname: "StudentLastName1",
+	dateofbirth: "01/01/1990",
+	notes: [
+				{
+				course_name: "Maths",
+				note: 3
+				},
+				{
+				course_name: "Programming",
+				note: 6
+				}
+			]});
+
+db.students.insert({
+	firstname: "Student2",
+	lastname: "StudentLastName2",
+	dateofbirth: "05/04/1990",
+	notes: [
+				{
+				course_name: "Physics",
+				note: 8
+				},
+				{
+				course_name: "Programming",
+				note: 3
+				}
+			]});
+
+db.students.insert({
+	firstname: "Student3",
+	lastname: "StudentLastName3",
+	dateofbirth: "12/06/1990",
+	notes: [
+				{
+				course_name: "Physics",
+				note: 4
+				},
+				{
+				course_name: "Maths",
+				note: 2
+				},
+				{
+				course_name: "Programming",
+				note: 7
+				}
+			]});
+	
+db.students.insert({
+	firstname: "Student4",
+	lastname: "StudentLastName4",
+	dateofbirth: "12/06/1990",
+	notes: [
+				{
+				course_name: "Physics",
+				note: 2
+				},
+				{
+				course_name: "Maths",
+				note: 5
+				},
+				{
+				course_name: "Programming",
+				note: 4
+				}
+			]});
+			   
