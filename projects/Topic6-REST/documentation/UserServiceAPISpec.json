@@ -1,0 +1,191 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is the documentation for a user CRUD Service.\n",
+        "version": "1.0.1",
+        "title": "User CRUD Service"
+    },
+    "basePath": "/v2",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/users/add/": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Creates user",
+                "operationId": "addUser",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "User object to be added",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "User created"
+                    }
+                }
+            }
+        },
+        "/users/getbyusername/{username}": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Gets user by user name",
+                "description": "",
+                "operationId": "getUserByUserName",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "username",
+                        "description": "username that will be used to find the User.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            }
+        },
+        "/users/getbyfirstname/{firstname}": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Gets list of users with a first name",
+                "description": "",
+                "operationId": "getUsersByFirstName",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "firstname",
+                        "description": "first name that will be used to get the list of Users.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/User"
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            }
+        },
+        "/users/update/{username}": {
+            "put": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Updates user",
+                "operationId": "updateUser",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "username",
+                        "description": "username that needs to be deleted",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Updated user object",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            }
+        },
+        "/users/delete/{username}": {
+            "delete": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Deletes user",
+                "operationId": "deleteUser",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "username",
+                        "description": "username that needs to be deleted",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "User": {
+            "type": "object",
+            "properties": {
+                "username": {
+                    "type": "string"
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
