@@ -11,7 +11,7 @@ public class ProductServiceFactory {
 	 * ProductService interface in order to be created by the factory
 	 */
 	public enum ProductServiceTypes {
-		MEMORYIMP
+		DATABASEIMP
 	}
 
 	/**
@@ -23,7 +23,7 @@ public class ProductServiceFactory {
 	 * @return a ProductService interface implementation
 	 */
 	public static ProductService getProdcutService(ProductServiceTypes type) {
-		if (type.equals(ProductServiceTypes.MEMORYIMP)) {
+		if (type.equals(ProductServiceTypes.DATABASEIMP)) {
 			return new ProductServiceImp();
 		}
 		return null;

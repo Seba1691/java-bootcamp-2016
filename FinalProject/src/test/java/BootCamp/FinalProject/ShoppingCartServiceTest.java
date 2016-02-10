@@ -67,7 +67,7 @@ public class ShoppingCartServiceTest {
 	public void setUp() {
 		SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(userTest, "1234"));
 		mockMvc = webAppContextSetup(webApplicationContext).build();
-		service = ShoppingCartServiceFactory.getShoppingCartService(ShoppingCartServiceTypes.MEMORYIMP);
+		service = ShoppingCartServiceFactory.getShoppingCartService(ShoppingCartServiceTypes.DATABASEIMP);
 		service.clearCart(userTest);
 	}
 
@@ -80,23 +80,23 @@ public class ShoppingCartServiceTest {
 	@Transactional
 	@Rollback(true)
 	public void whenNonExistingProductIsAddedItIsAddedToCart() throws Exception {
-		mockMvc.perform(post("/cart/add/"+skuProductTest)).andExpect(status().isNoContent());
+		mockMvc.perform(post("/cart/add/" + skuProductTest)).andExpect(status().isNoContent());
 		Assert.assertFalse(service.getContents(userTest).isEmpty());
-	}
-	
-	@Test
-	@Transactional
-	@Rollback(true)
-	public void whenExistingProductIsAddedItsQuantityIsIncreased() throws Exception {
-		service.addItem(skuProductTest, userTest);
-		mockMvc.perform(post("/cart/add/"+skuProductTest)).andExpect(status().isNoContent());
-		Assert.assertTrue(service.getContents(userTest).get(0).getQuantity()==2);
 	}
 
 	@Test
 	@Transactional
 	@Rollback(true)
-	public void whenItemIsDeletedItIsDeletedFromCart() throws Exception {		
+	public void whenExistingProductIsAddedItsQuantityIsIncreased() throws Exception {
+		service.addItem(skuProductTest, userTest);
+		mockMvc.perform(post("/cart/add/" + skuProductTest)).andExpect(status().isNoContent());
+		Assert.assertTrue(service.getContents(userTest).get(0).getQuantity() == 2);
+	}
+
+	@Test
+	@Transactional
+	@Rollback(true)
+	public void whenItemIsDeletedItIsDeletedFromCart() throws Exception {
 		service.addItem(skuProductTest, userTest);
 		mockMvc.perform(delete("/cart/remove/" + skuProductTest)).andExpect(status().isNoContent());
 		Assert.assertTrue(service.getContents(userTest).isEmpty());
@@ -106,7 +106,7 @@ public class ShoppingCartServiceTest {
 	@Transactional
 	@Rollback(true)
 	public void whenItemIsDeletedAndItDoesNotExistExceptionIsThrown() throws Exception {
-		mockMvc.perform(delete("/cart/remove/"+skuProductTest)).andExpect(status().isNotFound());
+		mockMvc.perform(delete("/cart/remove/" + skuProductTest)).andExpect(status().isNotFound());
 	}
 
 	@Test
@@ -117,7 +117,7 @@ public class ShoppingCartServiceTest {
 			service.addItem(skuProductTest, userTest);
 		}
 		List<CartItem> content = new ArrayList<CartItem>();
-		content.add(new CartItem(ProductServiceFactory.getProdcutService(ProductServiceTypes.MEMORYIMP).getbySKU(skuProductTest), 10));
+		content.add(new CartItem(ProductServiceFactory.getProdcutService(ProductServiceTypes.DATABASEIMP).getbySKU(skuProductTest), 10));
 		mockMvc.perform(get("/cart/getcontents/")).andExpect(status().isOk()).andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE)).andExpect(content().string(json(content)));
 	}
 

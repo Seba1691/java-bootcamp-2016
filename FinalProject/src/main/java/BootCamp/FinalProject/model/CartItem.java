@@ -4,7 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * 
- * This class represents an item into a cart. It has a product and its respective quantity.
+ * This class represents an item into a cart. It has a product and its
+ * respective quantity.
  *
  */
 public class CartItem {

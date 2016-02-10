@@ -77,7 +77,7 @@ public class UserServiceTest {
 	@Test
 	@Transactional
 	@Rollback(true)
-	public void whenUserIsCreatedItIsAddedToDB() throws Exception {		
+	public void whenUserIsCreatedItIsAddedToDB() throws Exception {
 		User newUser = new User("John12", "123456", "John", "Smith", "jsmith@mail.com");
 		mockMvc.perform(post("/users/add").content(this.json(newUser)).contentType(contentType)).andExpect(status().isCreated());
 		Assert.assertNotNull(service.getUserByUserName("John12"));

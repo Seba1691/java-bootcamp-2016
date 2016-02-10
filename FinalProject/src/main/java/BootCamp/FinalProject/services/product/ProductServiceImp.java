@@ -24,9 +24,12 @@ public class ProductServiceImp implements ProductService {
 
 	/**
 	 * Gets a specific Product looking for it in the DB by its SKU
-	 * @param sku used to find the product
+	 * 
+	 * @param sku
+	 *            used to find the product
 	 * @return Product with this sku
-	 * @throws NotFoundException when there is not any product with that sku
+	 * @throws NotFoundException
+	 *             when there is not any product with that sku
 	 */
 	public Product getbySKU(String sku) throws NotFoundException {
 		String selectQuery = "SELECT SKU, description, category, price FROM PRODUCTS WHERE SKU = ?";
@@ -47,7 +50,9 @@ public class ProductServiceImp implements ProductService {
 
 	/**
 	 * Gets list of Product which has a given name
-	 * @param name used to find the products
+	 * 
+	 * @param name
+	 *            used to find the products
 	 * @return list of products
 	 */
 	public List<Product> getByName(String name) {
@@ -69,7 +74,9 @@ public class ProductServiceImp implements ProductService {
 
 	/**
 	 * Gets list of Product that velong to a category
-	 * @param category used to find the products in the DB
+	 * 
+	 * @param category
+	 *            used to find the products in the DB
 	 * @return list of products
 	 */
 	public List<Product> getByCategory(String category) {

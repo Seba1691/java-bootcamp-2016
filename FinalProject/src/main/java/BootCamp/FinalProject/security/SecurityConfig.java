@@ -23,23 +23,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	 */
 	@Autowired
 	protected void configure(AuthenticationManagerBuilder builder) throws Exception {
-		builder.jdbcAuthentication()
-		.dataSource(ShoppingDBConnection.getInstance().dataSource())
-		.usersByUsernameQuery("select username as principal, password as credentials, true from users where username = ?")
-		.authoritiesByUsernameQuery("select username, 'USER' from users where username=?");
+		builder.jdbcAuthentication().dataSource(ShoppingDBConnection.getInstance().dataSource())//
+				.usersByUsernameQuery("select username as principal, password as credentials, true from users where username = ?")//
+				.authoritiesByUsernameQuery("select username, 'USER' from users where username=?");
 	}
 
 	/**
-	 * Configure the authentication mode that will be used and the Urls that will need authentication to be accessed
-	 * It also defines the logout redirect Url
+	 * Configure the authentication mode that will be used and the Urls that
+	 * will need authentication to be accessed It also defines the logout
+	 * redirect Url
 	 */
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/cart/**").fullyAuthenticated()
-		    .antMatchers("/users/delete/**").fullyAuthenticated()
-		    .antMatchers("/users/update/**").fullyAuthenticated();
-		http.csrf().disable();		
-		http.httpBasic();		
-		http.logout().logoutUrl("/logout").logoutSuccessUrl("/login?logout").clearAuthentication(true);	
+		http.authorizeRequests().antMatchers("/cart/**").fullyAuthenticated()//
+				.antMatchers("/users/delete/**").fullyAuthenticated()//
+				.antMatchers("/users/update/**").fullyAuthenticated();
+		http.csrf().disable();
+		http.httpBasic();
+		http.logout().logoutUrl("/logout").logoutSuccessUrl("/login?logout").clearAuthentication(true);
 	}
 }

@@ -24,7 +24,7 @@ import BootCamp.FinalProject.services.cart.ShoppingCartServiceFactory.ShoppingCa
 @RequestMapping(value = "/cart")
 public class ShoppingCartController {
 
-	private ShoppingCartService service = ShoppingCartServiceFactory.getShoppingCartService(ShoppingCartServiceTypes.MEMORYIMP);
+	private ShoppingCartService service = ShoppingCartServiceFactory.getShoppingCartService(ShoppingCartServiceTypes.DATABASEIMP);
 
 	@RequestMapping(value = "/add/{sku}", method = RequestMethod.POST)
 	public ResponseEntity<Void> addItem(@PathVariable("sku") String sku) throws NotFoundException {
@@ -45,7 +45,7 @@ public class ShoppingCartController {
 		List<CartItem> cartContents = service.getContents(getCurrentUser());
 		return new ResponseEntity<List<CartItem>>(cartContents, HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/checkout", method = RequestMethod.PUT)
 	public ResponseEntity<Void> checkout() throws NotEnoughStockException {
 		service.checkout(getCurrentUser());

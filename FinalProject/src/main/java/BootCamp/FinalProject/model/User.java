@@ -3,6 +3,7 @@ package BootCamp.FinalProject.model;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * 
  * This class represents all the user’s information.
@@ -15,11 +16,11 @@ public class User {
 	private String firstName = null;
 	private String lastName = null;
 	private String email = null;
-	
-	public User(){
-		
+
+	public User() {
+
 	}
-	
+
 	public User(String username, String password, String firstName, String lastName, String email) {
 		this.username = username;
 		this.password = password;

@@ -10,7 +10,7 @@ public class UserServiceFactory {
 	 * UserService interface in order to be created by the factory
 	 */
 	public enum UserServiceTypes {
-		MEMORYIMP, DATABASEIMP
+		DATABASEIMP
 	}
 
 	/**
@@ -22,9 +22,6 @@ public class UserServiceFactory {
 	 * @return a UserService interface implementation
 	 */
 	public static UserService getUserService(UserServiceTypes type) {
-		if (type.equals(UserServiceTypes.MEMORYIMP)) {
-			return UserServiceMemoryOnly.getInstance();
-		}
 		if (type.equals(UserServiceTypes.DATABASEIMP)) {
 			return new UserServiceDataBase();
 		}

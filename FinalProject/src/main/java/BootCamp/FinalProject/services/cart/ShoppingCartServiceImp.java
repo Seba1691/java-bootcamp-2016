@@ -166,14 +166,14 @@ public class ShoppingCartServiceImp implements ShoppingCartService {
 		}
 		return countInvalid == 0;
 	}
-	
+
 	/**
-	 * Removes all items from a Cart.	
+	 * Removes all items from a Cart.
 	 * 
 	 * @param userName
 	 *            Cart owner
 	 */
-	public void clearCart(String userName){
+	public void clearCart(String userName) {
 		String selectQuery = "DELETE FROM CARTS WHERE username = ?";
 		try {
 			pStmt = dbConnection.prepareStatement(selectQuery);

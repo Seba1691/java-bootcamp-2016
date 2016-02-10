@@ -21,7 +21,7 @@ import BootCamp.FinalProject.services.user.UserServiceFactory.UserServiceTypes;
 @Controller
 @RequestMapping(value = "/users")
 public class UsersController {
-	
+
 	private UserServiceTypes serviceType = UserServiceTypes.DATABASEIMP;
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)

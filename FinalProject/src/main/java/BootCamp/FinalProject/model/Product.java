@@ -14,14 +14,14 @@ public class Product {
 	private String category;
 	private double price;
 	private int amount;
-	
+
 	public Product(String sku, String description, String category, double price) {
 		this.sku = sku;
 		this.description = description;
 		this.category = category;
 		this.price = price;
 	}
-	
+
 	@JsonProperty("SKU")
 	public String getSku() {
 		return sku;
@@ -30,7 +30,7 @@ public class Product {
 	public void setSku(String sku) {
 		this.sku = sku;
 	}
-	
+
 	@JsonProperty("description")
 	public String getDescription() {
 		return description;
@@ -39,7 +39,7 @@ public class Product {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+
 	@JsonProperty("category")
 	public String getCategory() {
 		return category;
@@ -48,7 +48,7 @@ public class Product {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	
+
 	@JsonProperty("price")
 	public double getPrice() {
 		return price;
@@ -56,8 +56,8 @@ public class Product {
 
 	public void setPrice(double price) {
 		this.price = price;
-	}		
-	
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -104,6 +104,5 @@ public class Product {
 		sb.append("  amount: ").append(amount).append("\n");
 		sb.append("}\n");
 		return sb.toString();
-	}		
+	}
 }
-

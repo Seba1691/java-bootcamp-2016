@@ -22,7 +22,7 @@ import BootCamp.FinalProject.services.product.ProductServiceFactory.ProductServi
 @RequestMapping(value = "/product")
 public class ProductsController {
 
-	private ProductService service = ProductServiceFactory.getProdcutService(ProductServiceTypes.MEMORYIMP);
+	private ProductService service = ProductServiceFactory.getProdcutService(ProductServiceTypes.DATABASEIMP);
 
 	@RequestMapping(value = "/getbysku/{sku}", produces = { "application/json" }, method = RequestMethod.GET)
 	public ResponseEntity<Product> getbySKU(@PathVariable("sku") String sku) throws NotFoundException {
@@ -37,7 +37,7 @@ public class ProductsController {
 		ResponseEntity<List<Product>> response = new ResponseEntity<List<Product>>(product, HttpStatus.OK);
 		return response;
 	}
-	
+
 	@RequestMapping(value = "/getbycategory/{category}", produces = { "application/json" }, method = RequestMethod.GET)
 	public ResponseEntity<List<Product>> getByCategory(@PathVariable("category") String category) throws NotFoundException {
 		List<Product> product = service.getByCategory(category);

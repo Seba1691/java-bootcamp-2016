@@ -8,7 +8,8 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 /**
  * 
- * This class is responsable to establish the connection with the Data Base Shopping where all data is stored
+ * This class is responsable to establish the connection with the Data Base
+ * Shopping where all data is stored
  *
  */
 public class ShoppingDBConnection {
@@ -36,7 +37,7 @@ public class ShoppingDBConnection {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}	
+	}
 
 	public static ShoppingDBConnection getInstance() {
 		if (instance == null) {
@@ -47,12 +48,13 @@ public class ShoppingDBConnection {
 
 	/**
 	 * Returns the connection
+	 * 
 	 * @return dbConnection
 	 */
 	public Connection getDBConnection() {
 		return dbConnection;
 	}
-	
+
 	/**
 	 * Returns a DataSource from the current DB settings
 	 */
